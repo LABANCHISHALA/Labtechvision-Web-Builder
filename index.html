@@ -1,0 +1,4374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="LabTechVision Web Builder - Build, edit, preview, export, publish and get certified.">
+
+<title>LabTechVision Web Builder</title>
+<meta name="theme-color" content="#06101d">
+<meta property="og:title" content="LabTechVision Web Builder">
+<meta property="og:description" content="Build, edit, preview, export and publish websites, then get certified.">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+
+<style>
+
+:root{
+    --bg:#06101d;
+    --panel:#0d1b2d;
+    --panel2:#10243a;
+    --blue:#29b6f6;
+    --purple:#7c4dff;
+    --gold:#f6c84e;
+    --text:#eef6ff;
+    --muted:#9db1c7;
+    --border:rgba(255,255,255,.10);
+    --green:#35d07f;
+    --red:#e74c3c;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    color:var(--text);
+
+    background:
+    radial-gradient(
+        circle at 10% 0%,
+        #123452,
+        transparent 30%
+    ),
+    radial-gradient(
+        circle at 90% 10%,
+        #24154e,
+        transparent 28%
+    ),
+    var(--bg);
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.container{
+    width:min(1200px,92%);
+    margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    background:rgba(6,16,29,.95);
+
+    backdrop-filter:blur(15px);
+
+    border-bottom:
+    1px solid var(--border);
+}
+
+.nav{
+    min-height:70px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.brand{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
+
+.brand img{
+    width:52px;
+    height:52px;
+
+    object-fit:contain;
+}
+
+.brand small{
+    display:block;
+
+    color:var(--muted);
+
+    font-size:9px;
+}
+
+.navlinks{
+    display:flex;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+}
+
+.navlinks a{
+    color:#c9d7e6;
+
+    text-decoration:none;
+}
+
+.navlinks a:hover{
+    color:#fff;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn{
+    border:
+    1px solid var(--border);
+
+    background:var(--panel);
+
+    color:#fff;
+
+    padding:11px 16px;
+
+    border-radius:11px;
+
+    font-weight:bold;
+
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.primary{
+    border:0;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--blue),
+        var(--purple)
+    );
+}
+
+.gold{
+    border:0;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffd86a,
+        #c88a16
+    );
+
+    color:#17110a;
+}
+
+.danger{
+    background:#421d2a;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    text-align:center;
+
+    padding:70px 0 50px;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:8px 14px;
+
+    border-radius:50px;
+
+    border:
+    1px solid #29b6f655;
+
+    background:#29b6f610;
+
+    color:#8fe2ff;
+
+    font-weight:bold;
+}
+
+h1{
+    font-size:
+    clamp(42px,7vw,78px);
+
+    line-height:1;
+
+    margin:24px auto;
+
+    max-width:950px;
+}
+
+.gradient{
+    background:
+    linear-gradient(
+        90deg,
+        #fff,
+        #62d4ff,
+        #f5ca5d
+    );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+}
+
+.hero p{
+    max-width:760px;
+
+    margin:auto;
+
+    color:var(--muted);
+
+    font-size:18px;
+
+    line-height:1.7;
+}
+
+.actions{
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-top:24px;
+}
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:14px;
+
+    margin-top:38px;
+}
+
+.stat,
+.card,
+.template,
+.dash-card{
+
+    background:
+    linear-gradient(
+        180deg,
+        #10243add,
+        #0d1b2ddd
+    );
+
+    border:
+    1px solid var(--border);
+
+    border-radius:17px;
+
+    padding:20px;
+}
+
+.stat b{
+    font-size:24px;
+}
+
+.stat span{
+    display:block;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    margin-top:4px;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    padding:55px 0;
+}
+
+.section-title{
+    text-align:center;
+
+    margin-bottom:30px;
+}
+
+.section-title h2{
+    font-size:34px;
+
+    margin:
+    0 0 8px;
+}
+
+.section-title p{
+    color:var(--muted);
+}
+
+/* ================= FEATURES ================= */
+
+.features,
+.templates{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:15px;
+}
+
+.icon{
+    font-size:27px;
+}
+
+.card p,
+.template p,
+.dash-card p{
+
+    color:var(--muted);
+
+    line-height:1.55;
+}
+
+/* ================= FORMS ================= */
+
+.tools{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:18px;
+}
+
+.field{
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+
+    margin-bottom:7px;
+
+    font-weight:bold;
+}
+
+input,
+textarea,
+select{
+
+    width:100%;
+
+    padding:12px;
+
+    border-radius:11px;
+
+    border:
+    1px solid var(--border);
+
+    background:#081625;
+
+    color:#fff;
+
+    outline:none;
+}
+
+textarea{
+    min-height:105px;
+
+    resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+
+    border-color:
+    var(--blue);
+}
+
+.toolbar{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+}
+
+/* ================= RESULT ================= */
+
+.result{
+
+    min-height:300px;
+
+    padding:17px;
+
+    background:#07111d;
+
+    border:
+    1px dashed var(--border);
+
+    border-radius:12px;
+
+    white-space:pre-wrap;
+
+    line-height:1.55;
+}
+
+/* ================= CODE EDITOR ================= */
+
+.code-editor{
+
+    min-height:500px;
+
+    font-family:
+    Consolas,
+    Monaco,
+    "Courier New",
+    monospace;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    background:#050b13;
+
+    color:#7ee7ff;
+
+    border:
+    1px solid #24445f;
+
+    tab-size:2;
+}
+
+/* ================= TEMPLATES ================= */
+
+.template{
+    cursor:pointer;
+}
+
+.template:hover{
+    border-color:#29b6f688;
+}
+
+.mini{
+    height:80px;
+
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #0e3c56,
+        #171348
+    );
+
+    margin-bottom:12px;
+}
+
+/* ================= PREVIEW ================= */
+
+.preview-wrap{
+
+    border:
+    1px solid var(--border);
+
+    border-radius:15px;
+
+    overflow:hidden;
+}
+
+.previewbar{
+
+    padding:9px;
+
+    background:#0a1725;
+}
+
+.dot{
+
+    display:inline-block;
+
+    width:9px;
+
+    height:9px;
+
+    border-radius:50%;
+
+    background:#60758b;
+
+    margin-right:5px;
+}
+
+iframe{
+
+    width:100%;
+
+    height:500px;
+
+    border:0;
+
+    background:white;
+}
+
+/* ================= DASHBOARD ================= */
+
+.dashboard{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:15px;
+}
+
+.dash-card strong{
+
+    font-size:25px;
+
+    display:block;
+
+    margin-bottom:5px;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:18px;
+}
+
+.contact-item{
+
+    display:flex;
+
+    gap:12px;
+
+    margin:18px 0;
+}
+
+.contact-item span{
+
+    display:block;
+
+    color:var(--muted);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    border-top:
+    1px solid var(--border);
+
+    padding:28px 0;
+
+    color:var(--muted);
+}
+
+/* ================= DOMAIN ================= */
+
+.domain-box{
+
+    margin-top:20px;
+
+    padding:22px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #071c2d,
+        #101b3d
+    );
+
+    border:
+    1px solid var(--blue);
+
+    border-radius:15px;
+
+    text-align:center;
+}
+
+.domain-link{
+
+    margin:18px 0;
+
+    padding:17px;
+
+    background:#050b13;
+
+    border:
+    1px solid var(--blue);
+
+    border-radius:12px;
+
+    color:#62d4ff;
+
+    font-family:
+    Consolas,
+    Monaco,
+    monospace;
+
+    font-size:16px;
+
+    word-break:break-all;
+}
+
+.live-status{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:30px;
+
+    background:#123522;
+
+    color:#6ff0a6;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+/* ================= NOTICE ================= */
+
+.notice{
+
+    padding:13px 15px;
+
+    border-left:
+    4px solid var(--gold);
+
+    background:#161a20;
+
+    color:#dbe4f3;
+
+    border-radius:8px;
+
+    margin-bottom:18px;
+
+    line-height:1.5;
+}
+
+/* ================= CERTIFICATE ================= */
+
+.certificate-shell{
+
+    padding:18px;
+
+    background:#d6b55b;
+
+    border-radius:18px;
+
+    box-shadow:
+    0 20px 70px #0008;
+}
+
+.certificate{
+
+    width:100%;
+
+    aspect-ratio:
+    297 / 210;
+
+    min-height:0;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+    radial-gradient(
+        circle at 50% 40%,
+        #172b54 0%,
+        #07122d 55%,
+        #030914 100%
+    );
+
+    color:#f7cc5b;
+
+    border:
+    7px solid #d6ad3d;
+
+    padding:4.5%;
+
+    font-family:Georgia,serif;
+
+    text-align:center;
+}
+
+.certificate:before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:13px;
+
+    border:
+    2px solid #f3c64f;
+
+    pointer-events:none;
+}
+
+.certificate:after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:22px;
+
+    border:
+    1px solid #ffffff28;
+
+    pointer-events:none;
+}
+
+.cert-inner{
+
+    position:relative;
+
+    z-index:1;
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.cert-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    width:100%;
+
+    justify-content:center;
+}
+
+.cert-logo{
+
+    width:92px;
+
+    height:92px;
+
+    object-fit:contain;
+
+    filter:
+    drop-shadow(
+        0 5px 12px #0008
+    );
+}
+
+.cert-heading{
+    text-align:left;
+}
+
+.cert-title{
+
+    font-size:
+    clamp(28px,4.2vw,54px);
+
+    font-weight:bold;
+
+    letter-spacing:6px;
+}
+
+.cert-sub{
+
+    font-size:
+    clamp(9px,1.1vw,14px);
+
+    letter-spacing:3px;
+}
+
+.cert-present{
+
+    color:#dbe4f3;
+
+    font-size:
+    clamp(10px,1.2vw,16px);
+}
+
+.cert-name{
+
+    font-size:
+    clamp(24px,3.8vw,48px);
+
+    font-style:italic;
+
+    font-weight:bold;
+
+    border-bottom:
+    1px solid #f3c64f;
+
+    padding:4px 35px;
+
+    min-width:45%;
+}
+
+.cert-body{
+
+    font-family:Arial;
+
+    color:#dbe4f3;
+
+    line-height:1.5;
+
+    font-size:
+    clamp(10px,1.2vw,16px);
+}
+
+.cert-footer{
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 110px 1fr;
+
+    align-items:end;
+
+    gap:15px;
+
+    font-family:Arial;
+
+    color:#dbe4f3;
+
+    font-size:
+    clamp(8px,.9vw,12px);
+}
+
+.signature{
+
+    font-family:cursive;
+
+    font-size:
+    clamp(18px,2vw,28px);
+
+    color:#f7cc5b;
+}
+
+.seal{
+
+    width:76px;
+
+    height:76px;
+
+    border:
+    3px solid #f3c64f;
+
+    border-radius:50%;
+
+    display:grid;
+
+    place-items:center;
+
+    color:#f3c64f;
+
+    font-weight:bold;
+
+    margin:auto;
+
+    font-size:12px;
+}
+
+/* Logo watermark */
+
+.cert-watermark{
+
+    position:absolute;
+
+    left:50%;
+
+    top:52%;
+
+    transform:
+    translate(-50%,-50%);
+
+    width:310px;
+
+    opacity:.055;
+
+    pointer-events:none;
+
+    filter:grayscale(1);
+}
+
+.cert-watermark img{
+
+    width:100%;
+
+    height:auto;
+}
+
+/* ================= PRINT LANDSCAPE ================= */
+
+@page{
+
+    size:A4 landscape;
+
+    margin:0;
+}
+
+@media print{
+
+    body *{
+        visibility:hidden!important;
+    }
+
+    #certificateCanvas,
+    #certificateCanvas *{
+        visibility:visible!important;
+    }
+
+    #certificateCanvas{
+
+        position:absolute;
+
+        left:0;
+
+        top:0;
+
+        width:100vw;
+
+        height:100vh;
+
+        aspect-ratio:auto;
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .navlinks{
+        display:none;
+    }
+
+    .features,
+    .templates{
+
+        grid-template-columns:
+        1fr 1fr;
+    }
+
+    .stats{
+
+        grid-template-columns:
+        1fr 1fr;
+    }
+
+    .tools,
+    .contact{
+
+        grid-template-columns:
+        1fr;
+    }
+
+    .dashboard{
+
+        grid-template-columns:
+        1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .features,
+    .templates,
+    .stats{
+
+        grid-template-columns:
+        1fr;
+    }
+
+    .certificate{
+
+        border-width:5px;
+
+        padding:7% 5%;
+    }
+
+    .cert-top{
+        gap:8px;
+    }
+
+    .cert-logo{
+
+        width:58px;
+
+        height:58px;
+    }
+
+    .cert-heading{
+        text-align:center;
+    }
+
+    .cert-title{
+        letter-spacing:3px;
+    }
+
+    .cert-footer{
+
+        grid-template-columns:
+        1fr 65px 1fr;
+
+        gap:5px;
+    }
+
+    .seal{
+
+        width:50px;
+
+        height:50px;
+
+        font-size:8px;
+    }
+
+    .signature{
+        font-size:15px;
+    }
+
+    .cert-name{
+        padding:3px 10px;
+    }
+}
+
+.hidden{
+    display:none!important;
+}
+
+.toast{
+
+    position:fixed;
+
+    right:18px;
+
+    bottom:18px;
+
+    background:#10243a;
+
+    border:
+    1px solid var(--border);
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    display:none;
+
+    z-index:9999;
+}
+
+
+html,body{overflow-x:hidden}
+.gradient{background-clip:text}
+.navlinks{row-gap:6px}
+@media(max-width:760px){.nav{flex-wrap:wrap;padding:8px 0}.navlinks{order:3;width:100%;justify-content:center}.stats,.features,.templates,.tools{grid-template-columns:1fr}}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<div class="container nav">
+
+<a class="brand" href="#home">
+
+<img
+src="logo.png" onerror="this.onerror=null;this.src=\'logo.svg\'"
+alt="LabTechVision Academy Logo"
+>
+
+<div>
+
+LabTechVision
+
+<small>
+WEB BUILDER • AI • ZAMBIA
+</small>
+
+</div>
+
+</a>
+
+<nav class="navlinks">
+
+<a href="#builder">
+Builder
+</a>
+
+<a href="#codeEditor">
+Code Editor
+</a>
+
+<a href="#dashboard">
+Dashboard
+</a>
+
+<a href="#certificate">
+Certificate
+</a>
+
+<a href="#contact">
+Contact
+</a>
+
+</nav>
+
+<button
+class="btn primary"
+onclick="scrollToId('builder')"
+>
+
+Start Building
+
+</button>
+
+</div>
+
+</header>
+
+
+<main>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+id="home"
+class="hero"
+>
+
+<div class="container">
+
+<span class="badge">
+
+⚡ AI WEBSITE BUILDER + FULL CODE EDITOR
+
+</span>
+
+<h1>
+
+Build. Edit. Export.
+
+<span class="gradient">
+Get Certified.
+</span>
+
+</h1>
+
+<p>
+
+Create professional websites, generate full HTML code,
+edit it, preview it live, export it and publish your project.
+
+</p>
+
+<div class="actions">
+
+<button
+class="btn primary"
+onclick="scrollToId('builder')"
+>
+
+✨ Build with AI
+
+</button>
+
+<button
+class="btn gold"
+onclick="scrollToId('codeEditor')"
+>
+
+💻 Open Code Editor
+
+</button>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+
+<b>
+AI
+</b>
+
+<span>
+Website Generator
+</span>
+
+</div>
+
+<div class="stat">
+
+<b>
+CODE
+</b>
+
+<span>
+Full Code Editor
+</span>
+
+</div>
+
+<div class="stat">
+
+<b>
+EXPORT
+</b>
+
+<span>
+HTML Website
+</span>
+
+</div>
+
+<div class="stat">
+
+<b>
+🏆
+</b>
+
+<span>
+Achievement Certificate
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+Everything You Need To Build
+</h2>
+
+<p>
+Generate, code, preview, export and recognise your achievement.
+</p>
+
+</div>
+
+<div class="features">
+
+<div class="card">
+
+<div class="icon">
+🤖
+</div>
+
+<h3>
+AI Website Assistant
+</h3>
+
+<p>
+Describe your idea and generate a complete starter website.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+💻
+</div>
+
+<h3>
+Full Code Editor
+</h3>
+
+<p>
+Paste or write your own HTML, CSS and JavaScript code.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+👁️
+</div>
+
+<h3>
+Live Preview
+</h3>
+
+<p>
+Run your code immediately inside the builder.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+⬇️
+</div>
+
+<h3>
+Export Website
+</h3>
+
+<p>
+Download your complete website as an HTML file.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🔍
+</div>
+
+<h3>
+AI SEO
+</h3>
+
+<p>
+Generate SEO titles, descriptions and keywords.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🏆
+</div>
+
+<h3>
+Automatic Certificate
+</h3>
+
+<p>
+Issue a personalised certificate after publishing.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     AI BUILDER
+===================================================== -->
+
+<section id="builder">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+🤖 AI Website Builder
+</h2>
+
+<p>
+Enter your project information and generate a complete starter website.
+</p>
+
+</div>
+
+
+<div class="tools">
+
+
+<div class="card">
+
+<div class="field">
+
+<label>
+Website Name
+</label>
+
+<input
+id="siteName"
+value="My New Website"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Business / Organisation Type
+</label>
+
+<input
+id="siteType"
+value="Modern local business"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+What should your website do?
+</label>
+
+<textarea
+id="siteGoal"
+>Introduce our services, build trust, receive enquiries and help customers contact us.</textarea>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Website Style
+</label>
+
+<select id="style">
+
+<option>
+Modern & Professional
+</option>
+
+<option>
+Bold & Creative
+</option>
+
+<option>
+Clean & Minimal
+</option>
+
+<option>
+Elegant & Premium
+</option>
+
+<option>
+Friendly & Colourful
+</option>
+
+</select>
+
+</div>
+
+
+<div class="toolbar">
+
+<button
+class="btn primary"
+onclick="generateAI()"
+>
+
+✨ Generate Website
+
+</button>
+
+
+<button
+class="btn"
+onclick="generateSEO()"
+>
+
+🔎 Generate SEO
+
+</button>
+
+
+<button
+class="btn gold"
+onclick="scrollToId('codeEditor')"
+>
+
+💻 Edit Full Code
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+AI Website Result
+</h3>
+
+<div
+id="aiResult"
+class="result"
+>
+
+Your generated website will appear here.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     TEMPLATES
+===================================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+Website Templates
+</h2>
+
+<p>
+Choose a starting point.
+</p>
+
+</div>
+
+
+<div class="templates">
+
+
+<div
+class="template"
+onclick="useTemplate(
+'Business Website',
+'Local Business',
+'Present products and services and receive enquiries.'
+)"
+>
+
+<div class="mini"></div>
+
+<h3>
+Business
+</h3>
+
+<p>
+Professional business website.
+</p>
+
+</div>
+
+
+<div
+class="template"
+onclick="useTemplate(
+'School Website',
+'School / Academy',
+'Show school information, programmes, news and admissions.'
+)"
+>
+
+<div class="mini"></div>
+
+<h3>
+School
+</h3>
+
+<p>
+Education website.
+</p>
+
+</div>
+
+
+<div
+class="template"
+onclick="useTemplate(
+'Church Website',
+'Church / Ministry',
+'Share services, events, ministries and contact information.'
+)"
+>
+
+<div class="mini"></div>
+
+<h3>
+Church
+</h3>
+
+<p>
+Church and ministry website.
+</p>
+
+</div>
+
+
+<div
+class="template"
+onclick="useTemplate(
+'Portfolio Website',
+'Creative Professional',
+'Showcase projects, skills, services and achievements.'
+)"
+>
+
+<div class="mini"></div>
+
+<h3>
+Portfolio
+</h3>
+
+<p>
+Personal portfolio website.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CODE EDITOR
+===================================================== -->
+
+<section id="codeEditor">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+💻 LabTechVision Full Code Editor
+</h2>
+
+<p>
+Write, paste, generate, preview, copy and export your complete website code.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="notice">
+
+<strong>
+How it works:
+</strong>
+
+Generate a website above or paste your own complete HTML code below.
+You can edit the code and preview it instantly.
+
+</div>
+
+
+<div class="field">
+
+<label>
+Full Website Code
+</label>
+
+<textarea
+id="fullCodeEditor"
+class="code-editor"
+spellcheck="false"
+placeholder="Paste or write your complete HTML, CSS and JavaScript code here..."
+></textarea>
+
+</div>
+
+
+<div class="toolbar">
+
+<button
+class="btn primary"
+onclick="generateFullCode()"
+>
+
+🤖 Generate Full Code
+
+</button>
+
+
+<button
+class="btn"
+onclick="previewFullCode()"
+>
+
+👁️ Preview Code
+
+</button>
+
+
+<button
+class="btn"
+onclick="copyFullCode()"
+>
+
+📋 Copy Code
+
+</button>
+
+
+<button
+class="btn gold"
+onclick="exportFullCode()"
+>
+
+⬇ Export Full Code
+
+</button>
+
+
+<button
+class="btn danger"
+onclick="clearFullCode()"
+>
+
+🗑 Clear
+
+</button>
+
+</div>
+
+
+<div style="margin-top:25px">
+
+<h3>
+Live Code Preview
+</h3>
+
+
+<div class="preview-wrap">
+
+<div class="previewbar">
+
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+
+</div>
+
+
+<iframe
+id="fullCodePreview"
+title="Full code preview"
+></iframe>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     WEBSITE PREVIEW
+===================================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+👁️ Website Preview
+</h2>
+
+<p>
+Preview the current generated website before publishing.
+</p>
+
+</div>
+
+
+<div class="preview-wrap">
+
+<div class="previewbar">
+
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+
+</div>
+
+
+<iframe
+id="preview"
+title="Website preview"
+></iframe>
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="btn"
+onclick="downloadSite()"
+>
+
+⬇ Download Website
+
+</button>
+
+
+<button
+class="btn primary"
+onclick="publishSite()"
+>
+
+🚀 Publish Website
+
+</button>
+
+</div>
+
+
+<!-- DOMAIN DISPLAY -->
+
+<div
+id="publishedDomainPanel"
+class="domain-box hidden"
+>
+
+<div style="font-size:50px">
+🌐
+</div>
+
+<h2>
+Website Published Successfully!
+</h2>
+
+<p style="color:var(--muted)">
+
+Your website domain link is shown below.
+
+</p>
+
+
+<div
+id="publishedDomain"
+class="domain-link"
+>
+
+Your domain will appear here
+
+</div>
+
+
+<span class="live-status">
+
+● PUBLISHED
+
+</span>
+
+
+<div class="actions">
+
+<button
+class="btn primary"
+onclick="openPublishedWebsite()"
+>
+
+🌐 Open Website
+
+</button>
+
+
+<button
+class="btn"
+onclick="copyPublishedDomain()"
+>
+
+📋 Copy Domain
+
+</button>
+
+</div>
+
+
+<p
+style="
+color:var(--muted);
+font-size:12px;
+margin-top:15px
+"
+>
+
+Demo publishing URL.
+Connect a real hosting/API deployment service for a live public website.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section id="dashboard">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+📊 Project Dashboard
+</h2>
+
+<p>
+Your projects are stored in this browser.
+</p>
+
+</div>
+
+
+<div class="dashboard">
+
+
+<div class="dash-card">
+
+<strong id="projectCount">
+0
+</strong>
+
+<span>
+Projects
+</span>
+
+<p>
+Total generated projects.
+</p>
+
+</div>
+
+
+<div class="dash-card">
+
+<strong id="publishedCount">
+0
+</strong>
+
+<span>
+Published
+</span>
+
+<p>
+Projects marked as published.
+</p>
+
+</div>
+
+
+<div class="dash-card">
+
+<strong id="certificateCount">
+0
+</strong>
+
+<span>
+Certificates
+</span>
+
+<p>
+Certificates issued on this device.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div
+class="card"
+style="margin-top:18px"
+>
+
+<h3>
+Recent Projects
+</h3>
+
+
+<div
+id="projectList"
+class="result"
+>
+
+No projects yet.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CERTIFICATE
+===================================================== -->
+
+<section id="certificate">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+🏆 Publishing Achievement Certificate
+</h2>
+
+<p>
+Publish a project first, then issue the personalised landscape certificate.
+</p>
+
+</div>
+
+
+<div class="card">
+
+
+<div class="field">
+
+<label>
+Publisher Full Name
+</label>
+
+<input
+id="certificateName"
+placeholder="Enter full name"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Website / Project Name
+</label>
+
+<input
+id="certificateProject"
+value="LabTechVision Web Builder"
+>
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="btn gold"
+onclick="issueCertificate()"
+>
+
+🏆 Issue Certificate
+
+</button>
+
+
+<button
+class="btn"
+onclick="printCertificate()"
+>
+
+🖨 Print / Save Certificate
+
+</button>
+
+</div>
+
+
+<div
+id="verificationBox"
+class="notice"
+style="margin-top:18px"
+>
+
+Certificate status:
+Not issued yet.
+
+</div>
+
+</div>
+
+
+<!-- CERTIFICATE PREVIEW -->
+
+<div
+id="certificatePreview"
+class="card hidden"
+style="margin-top:20px"
+>
+
+<div class="certificate-shell">
+
+
+<div
+class="certificate"
+id="certificateCanvas"
+>
+
+
+<!-- WATERMARK -->
+
+<div class="cert-watermark">
+
+<img
+src="logo.png" onerror="this.onerror=null;this.src=\'logo.svg\'"
+alt=""
+>
+
+</div>
+
+
+<div class="cert-inner">
+
+
+<!-- LOGO + TITLE -->
+
+<div class="cert-top">
+
+<img
+src="logo.png" onerror="this.onerror=null;this.src=\'logo.svg\'"
+class="cert-logo"
+alt="LabTechVision Academy Logo"
+>
+
+
+<div class="cert-heading">
+
+<div class="cert-title">
+CERTIFICATE
+</div>
+
+<div class="cert-sub">
+OF ACHIEVEMENT IN WEB DEVELOPMENT
+</div>
+
+</div>
+
+</div>
+
+
+<div class="cert-present">
+
+This certificate is proudly presented to
+
+</div>
+
+
+<div
+class="cert-name"
+id="certNameText"
+>
+
+Website Publisher
+
+</div>
+
+
+<div class="cert-body">
+
+For successfully building and publishing
+
+<strong id="certProjectText">
+LabTechVision Web Builder
+</strong>
+
+<br>
+
+using the LabTechVision Web Builder platform.
+
+</div>
+
+
+<div class="cert-footer">
+
+
+<div>
+
+<b id="certDate"></b>
+
+<br>
+
+<span id="certId"></span>
+
+<br>
+
+<span>
+VERIFY ID
+</span>
+
+</div>
+
+
+<div class="seal">
+
+✓
+
+<br>
+
+<small>
+PUBLISHED
+</small>
+
+</div>
+
+
+<div>
+
+<div class="signature">
+MR. CHISHALA LABAN
+</div>
+
+<b>
+MR. CHISHALA LABAN
+</b>
+
+<br>
+
+<small>
+FOUNDER &amp; INSTRUCTOR
+</small>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+Build Your Next Website With Us
+</h2>
+
+<p>
+Contact LabTechVision Academy.
+</p>
+
+</div>
+
+
+<div class="contact">
+
+
+<div class="card">
+
+<h3>
+LabTechVision Academy
+</h3>
+
+
+<div class="contact-item">
+
+📧
+
+<div>
+
+<b>
+Email
+</b>
+
+<span>
+labtechvisionacademy@gmail.com
+</span>
+
+</div>
+
+</div>
+
+
+<div class="contact-item">
+
+💬
+
+<div>
+
+<b>
+WhatsApp
+</b>
+
+<span>
++260 963 363 793
+</span>
+
+</div>
+
+</div>
+
+
+<div class="contact-item">
+
+📍
+
+<div>
+
+<b>
+Address
+</b>
+
+<span>
+Mpongwe District, Copperbelt Province, Zambia
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Send an Enquiry
+</h3>
+
+
+<div class="field">
+
+<label>
+Your Name
+</label>
+
+<input
+id="contactName"
+placeholder="Your name"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Message
+</label>
+
+<textarea
+id="contactMessage"
+placeholder="Tell us what website you need..."
+></textarea>
+
+</div>
+
+
+<button
+class="btn primary"
+onclick="sendWhatsApp()"
+>
+
+💬 Send via WhatsApp
+
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container">
+
+©
+
+<span id="year"></span>
+
+LabTechVision Web Builder
+
+<br>
+
+Mpongwe District • Copperbelt Province • Zambia
+
+</div>
+
+</footer>
+
+
+<div
+id="toast"
+class="toast"
+></div>
+
+
+<script>
+
+/* =====================================================
+   GLOBAL VARIABLES
+===================================================== */
+
+let generatedHTML = "";
+
+let published = false;
+
+let certificateIssued = false;
+
+let certificateId = "";
+
+let publishedDomain = "";
+
+function loadProjects(){try{return JSON.parse(localStorage.getItem("ltvProjects")||"[]")}catch(e){return[]}}
+function saveProjects(){try{localStorage.setItem("ltvProjects",JSON.stringify(projects))}catch(e){}}
+let projects =
+loadProjects();
+
+
+/* =====================================================
+   ELEMENT SHORTCUT
+===================================================== */
+
+const $ = id =>
+document.getElementById(id);
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function toast(message){
+
+    $("toast").textContent =
+    message;
+
+    $("toast").style.display =
+    "block";
+
+    setTimeout(()=>{
+
+        $("toast").style.display =
+        "none";
+
+    },2800);
+
+}
+
+
+/* =====================================================
+   SCROLL
+===================================================== */
+
+function scrollToId(id){
+
+    const element =
+    $(id);
+
+    if(element){
+
+        element.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    }
+
+}
+
+
+/* =====================================================
+   TEMPLATE
+===================================================== */
+
+function useTemplate(
+    name,
+    type,
+    goal
+){
+
+    $("siteName").value =
+    name;
+
+    $("siteType").value =
+    type;
+
+    $("siteGoal").value =
+    goal;
+
+    scrollToId("builder");
+
+    toast(
+        "Template loaded."
+    );
+
+}
+
+
+/* =====================================================
+   AI WEBSITE GENERATOR
+===================================================== */
+
+function generateAI(){
+
+    const name =
+    $("siteName").value.trim()
+    ||
+    "My New Website";
+
+    const type =
+    $("siteType").value.trim()
+    ||
+    "Modern Organisation";
+
+    const goal =
+    $("siteGoal").value.trim()
+    ||
+    "Introduce our services and help visitors contact us.";
+
+    const style =
+    $("style").value;
+
+
+    $("aiResult").textContent =
+
+`AI WEBSITE BLUEPRINT
+
+PROJECT
+${name}
+
+TYPE
+${type}
+
+STYLE
+${style}
+
+PRIMARY GOAL
+${goal}
+
+RECOMMENDED PAGES
+
+1. Home
+2. About
+3. Services
+4. Projects
+5. Testimonials
+6. Contact
+
+AI CONTENT
+
+Hero:
+Build a stronger digital presence with ${name}.
+
+CTA:
+Get Started Today
+
+CODE
+
+A complete editable HTML website has been generated below.`;
+
+
+    generatedHTML =
+    createWebsite(
+        name,
+        type,
+        goal
+    );
+
+
+    $("fullCodeEditor").value =
+    generatedHTML;
+
+
+    $("preview").srcdoc =
+    generatedHTML;
+
+
+    $("fullCodePreview").srcdoc =
+    generatedHTML;
+
+
+    saveDraftProject(
+        name,
+        type
+    );
+
+
+    toast(
+        "Website and full code generated successfully."
+    );
+
+}
+
+
+/* =====================================================
+   FULL CODE GENERATOR
+===================================================== */
+
+function generateFullCode(){
+
+    const name =
+    $("siteName").value.trim()
+    ||
+    "LabTechVision Website";
+
+    const type =
+    $("siteType").value.trim()
+    ||
+    "Professional Website";
+
+    const goal =
+    $("siteGoal").value.trim()
+    ||
+    "Welcome to our professional website.";
+
+
+    generatedHTML =
+    createWebsite(
+        name,
+        type,
+        goal
+    );
+
+
+    $("fullCodeEditor").value =
+    generatedHTML;
+
+
+    $("preview").srcdoc =
+    generatedHTML;
+
+
+    $("fullCodePreview").srcdoc =
+    generatedHTML;
+
+
+    saveDraftProject(
+        name,
+        type
+    );
+
+
+    toast(
+        "Complete website code generated successfully."
+    );
+
+}
+
+
+/* =====================================================
+   SEO
+===================================================== */
+
+function generateSEO(){
+
+    const name =
+    $("siteName").value.trim()
+    ||
+    "LabTechVision";
+
+    const type =
+    $("siteType").value.trim()
+    ||
+    "Business";
+
+
+    $("aiResult").textContent =
+
+`AI SEO PACKAGE
+
+SEO TITLE
+
+${name} | Professional ${type} Website
+
+META DESCRIPTION
+
+Discover ${name}. Explore our services, learn about what we do and contact us today.
+
+KEYWORDS
+
+${name},
+${type},
+Zambia,
+Mpongwe,
+professional website,
+digital services
+
+SOCIAL HEADLINE
+
+${name} — Professional Digital Services`;
+
+
+    toast(
+        "SEO package generated."
+    );
+
+}
+
+
+/* =====================================================
+   CREATE WEBSITE
+===================================================== */
+
+function createWebsite(
+    name,
+    type,
+    goal
+){
+
+return `<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>
+${escapeHTML(name)}
+</title>
+
+<meta
+name="description"
+content="${escapeHTML(goal)}"
+>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+
+font-family:
+Arial,
+sans-serif;
+
+background:#f5f9fc;
+
+color:#102033;
+
+}
+
+header{
+
+background:#07111f;
+
+color:white;
+
+padding:20px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+margin-left:20px;
+
+}
+
+.hero{
+
+min-height:75vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+padding:80px 8%;
+
+color:white;
+
+background:
+
+linear-gradient(
+135deg,
+#07111f,
+#123b58,
+#24154e
+);
+
+}
+
+.hero h1{
+
+font-size:
+clamp(40px,7vw,72px);
+
+margin:15px;
+
+}
+
+.hero p{
+
+max-width:750px;
+
+margin:15px auto;
+
+line-height:1.7;
+
+font-size:18px;
+
+}
+
+.btn{
+
+display:inline-block;
+
+margin-top:20px;
+
+padding:13px 20px;
+
+background:#29b6f6;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:10px;
+
+font-weight:bold;
+
+}
+
+section{
+
+padding:60px 8%;
+
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(220px,1fr)
+);
+
+gap:20px;
+
+}
+
+.card{
+
+padding:25px;
+
+background:white;
+
+border-radius:15px;
+
+box-shadow:
+0 8px 30px #dce5ec;
+
+}
+
+.contact{
+
+background:#10243a;
+
+color:#fff;
+
+text-align:center;
+
+}
+
+.contact a{
+
+color:#62d4ff;
+
+}
+
+footer{
+
+background:#050b13;
+
+color:#9db1c7;
+
+text-align:center;
+
+padding:30px;
+
+}
+
+@media(max-width:700px){
+
+header{
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+nav a{
+
+margin:5px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h2>
+${escapeHTML(name)}
+</h2>
+
+
+<nav>
+
+<a href="#home">
+Home
+</a>
+
+<a href="#about">
+About
+</a>
+
+<a href="#services">
+Services
+</a>
+
+<a href="#contact">
+Contact
+</a>
+
+</nav>
+
+</header>
+
+
+<section
+class="hero"
+id="home"
+>
+
+<div>
+
+<p>
+${escapeHTML(type)}
+</p>
+
+
+<h1>
+Build Your Digital Future
+</h1>
+
+
+<p>
+${escapeHTML(goal)}
+</p>
+
+
+<a
+class="btn"
+href="#contact"
+>
+
+Get Started
+
+</a>
+
+</div>
+
+</section>
+
+
+<section
+id="about"
+>
+
+<div
+style="
+text-align:center;
+margin-bottom:35px;
+"
+>
+
+<h2>
+About Us
+</h2>
+
+<p style="margin-top:10px">
+
+Professional digital solutions
+designed for your audience.
+
+</p>
+
+</div>
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<h3>
+Professional
+</h3>
+
+<p style="margin-top:10px">
+
+Modern responsive
+digital experiences.
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Reliable
+</h3>
+
+<p style="margin-top:10px">
+
+Simple and effective solutions.
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Modern
+</h3>
+
+<p style="margin-top:10px">
+
+Modern web technologies
+and design.
+
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section
+id="services"
+>
+
+<div
+style="
+text-align:center;
+margin-bottom:35px;
+"
+>
+
+<h2>
+Our Services
+</h2>
+
+</div>
+
+
+<div class="grid">
+
+
+<div class="card">
+
+<h3>
+Website Development
+</h3>
+
+<p style="margin-top:10px">
+
+Professional responsive websites.
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Digital Solutions
+</h3>
+
+<p style="margin-top:10px">
+
+Technology solutions for organisations.
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Web Design
+</h3>
+
+<p style="margin-top:10px">
+
+Beautiful user-friendly interfaces.
+
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section
+class="contact"
+id="contact"
+>
+
+<h2>
+Let's Work Together
+</h2>
+
+
+<p style="margin-top:15px">
+
+Mpongwe District,
+Copperbelt Province, Zambia
+
+</p>
+
+
+<p style="margin-top:10px">
+
+<a
+href="mailto:labtechvisionacademy@gmail.com"
+>
+
+labtechvisionacademy@gmail.com
+
+</a>
+
+</p>
+
+
+<p style="margin-top:10px">
+
+<a
+href="https://wa.me/260963363793"
+>
+
++260 963 363 793
+
+</a>
+
+</p>
+
+
+<a
+class="btn"
+href="https://wa.me/260963363793"
+>
+
+Contact Us on WhatsApp
+
+</a>
+
+</section>
+
+
+<footer>
+
+©
+${new Date().getFullYear()}
+${escapeHTML(name)}
+
+<br>
+
+Built with LabTechVision Web Builder
+
+</footer>
+
+
+</body>
+
+</html>`;
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+    .replace(
+        /[&<>"']/g,
+        function(char){
+
+            return {
+
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#039;"
+
+            }[char];
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   PREVIEW CODE
+===================================================== */
+
+function previewFullCode(){
+
+    const code =
+    $("fullCodeEditor").value;
+
+
+    if(!code.trim()){
+
+        toast(
+            "Please enter or generate website code first."
+        );
+
+        return;
+
+    }
+
+
+    generatedHTML =
+    code;
+
+
+    $("fullCodePreview").srcdoc =
+    code;
+
+
+    $("preview").srcdoc =
+    code;
+
+
+    toast(
+        "Website preview updated."
+    );
+
+}
+
+
+/* =====================================================
+   COPY CODE
+===================================================== */
+
+async function copyFullCode(){
+
+    const code =
+    $("fullCodeEditor").value;
+
+
+    if(!code.trim()){
+
+        toast(
+            "There is no code to copy."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            code
+        );
+
+    }
+
+    catch(error){
+
+        $("fullCodeEditor").select();
+
+        document.execCommand(
+            "copy"
+        );
+
+    }
+
+
+    toast(
+        "Full website code copied."
+    );
+
+}
+
+
+/* =====================================================
+   SAFE FILE NAME
+===================================================== */
+
+function safeFilename(){
+
+    const name =
+    $("siteName")
+    .value
+    .trim()
+    ||
+    "labtechvision-website";
+
+
+    return (
+
+        name
+        .toLowerCase()
+        .replace(
+            /[^a-z0-9]+/g,
+            "-"
+        )
+        .replace(
+            /^-|-$/g,
+            ""
+        )
+
+        ||
+
+        "website"
+
+    )
+    +
+    ".html";
+
+}
+
+
+/* =====================================================
+   DOWNLOAD BLOB
+===================================================== */
+
+function downloadBlob(
+    code,
+    filename
+){
+
+    const blob =
+    new Blob(
+        [code],
+        {
+            type:
+            "text/html;charset=utf-8"
+        }
+    );
+
+
+    const url =
+    URL.createObjectURL(
+        blob
+    );
+
+
+    const a =
+    document.createElement(
+        "a"
+    );
+
+
+    a.href =
+    url;
+
+
+    a.download =
+    filename;
+
+
+    document.body.appendChild(
+        a
+    );
+
+
+    a.click();
+
+
+    a.remove();
+
+
+    URL.revokeObjectURL(
+        url
+    );
+
+}
+
+
+/* =====================================================
+   EXPORT
+===================================================== */
+
+function exportFullCode(){
+
+    const code =
+    $("fullCodeEditor").value
+    ||
+    generatedHTML;
+
+
+    if(!code.trim()){
+
+        toast(
+            "Please generate or enter code first."
+        );
+
+        return;
+
+    }
+
+
+    downloadBlob(
+        code,
+        safeFilename()
+    );
+
+
+    toast(
+        "Full website exported successfully."
+    );
+
+}
+
+
+/* =====================================================
+   CLEAR
+===================================================== */
+
+function clearFullCode(){
+
+    if(
+        confirm(
+            "Are you sure you want to clear the code?"
+        )
+    ){
+
+        $("fullCodeEditor").value =
+        "";
+
+        $("fullCodePreview").srcdoc =
+        "";
+
+        generatedHTML =
+        "";
+
+        toast(
+            "Code editor cleared."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   SAVE DRAFT
+===================================================== */
+
+function saveDraftProject(
+    name,
+    type
+){
+
+    let existing =
+    projects.find(
+        p =>
+        p.name === name
+    );
+
+
+    if(!existing){
+
+        projects.unshift({
+
+            name:name,
+
+            type:type,
+
+            status:"Draft",
+
+            date:
+            new Date()
+            .toLocaleDateString(
+                "en-GB"
+            )
+
+        });
+
+
+        projects =
+        projects.slice(0,20);
+
+
+        saveProjects();
+
+    }
+
+
+    updateDashboard();
+
+}
+
+
+/* =====================================================
+   PUBLISH WEBSITE
+===================================================== */
+
+function publishSite(){
+
+    const code =
+    $("fullCodeEditor")
+    .value
+    .trim();
+
+
+    if(!code){
+
+        toast(
+            "Generate or enter website code first."
+        );
+
+        scrollToId(
+            "codeEditor"
+        );
+
+        return;
+
+    }
+
+
+    generatedHTML =
+    code;
+
+
+    const name =
+    $("siteName")
+    .value
+    .trim()
+    ||
+    "My New Website";
+
+
+    const slug =
+    name
+    .toLowerCase()
+    .replace(
+        /[^a-z0-9]+/g,
+        "-"
+    )
+    .replace(
+        /^-|-$/g,
+        ""
+    )
+    ||
+    "my-website";
+
+
+    /*
+       DEMO DOMAIN
+
+       Replace this with real hosting/API
+       deployment when backend hosting is connected.
+    */
+
+    publishedDomain =
+    "https://labtechvision-web-builder.example/"
+    +
+    slug;
+
+
+    published =
+    true;
+
+
+    $("certificateProject")
+    .value =
+    name;
+
+
+    $("publishedDomain")
+    .textContent =
+    publishedDomain;
+
+
+    $("publishedDomainPanel")
+    .classList
+    .remove(
+        "hidden"
+    );
+
+
+    let project =
+    projects.find(
+        p =>
+        p.name === name
+    );
+
+
+    if(project){
+
+        project.status =
+        "Published";
+
+
+        project.url =
+        publishedDomain;
+
+
+        project.publishedAt =
+        new Date()
+        .toLocaleString(
+            "en-GB"
+        );
+
+    }
+
+    else{
+
+        projects.unshift({
+
+            name:name,
+
+            type:
+            $("siteType").value,
+
+            status:
+            "Published",
+
+            url:
+            publishedDomain,
+
+            publishedAt:
+            new Date()
+            .toLocaleString(
+                "en-GB"
+            )
+
+        });
+
+    }
+
+
+    saveProjects();
+
+
+    updateDashboard();
+
+
+    $("publishedDomainPanel")
+    .scrollIntoView({
+
+        behavior:"smooth",
+
+        block:"center"
+
+    });
+
+
+    toast(
+        "Website published successfully!"
+    );
+
+}
+
+
+/* =====================================================
+   OPEN DOMAIN
+===================================================== */
+
+function openPublishedWebsite(){
+
+    if(!publishedDomain){
+
+        toast(
+            "No published domain available."
+        );
+
+        return;
+
+    }
+
+
+    const code=$("fullCodeEditor").value||generatedHTML;
+ const u=URL.createObjectURL(new Blob([code],{type:"text/html;charset=utf-8"}));
+ window.open(u,"_blank");
+
+}
+
+
+/* =====================================================
+   COPY DOMAIN
+===================================================== */
+
+async function copyPublishedDomain(){
+
+    if(!publishedDomain){
+
+        toast(
+            "No published domain available."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            publishedDomain
+        );
+
+    }
+
+    catch(error){
+
+        const temp =
+        document.createElement(
+            "textarea"
+        );
+
+
+        temp.value =
+        publishedDomain;
+
+
+        document.body.appendChild(
+            temp
+        );
+
+
+        temp.select();
+
+
+        document.execCommand(
+            "copy"
+        );
+
+
+        temp.remove();
+
+    }
+
+
+    toast(
+        "Domain link copied."
+    );
+
+}
+
+
+/* =====================================================
+   DOWNLOAD WEBSITE
+===================================================== */
+
+function downloadSite(){
+
+    const code =
+    $("fullCodeEditor").value
+    ||
+    generatedHTML;
+
+
+    if(!code){
+
+        toast(
+            "Generate or enter website code first."
+        );
+
+        return;
+
+    }
+
+
+    downloadBlob(
+        code,
+        safeFilename()
+    );
+
+
+    toast(
+        "Website exported."
+    );
+
+}
+
+
+/* =====================================================
+   ISSUE CERTIFICATE
+===================================================== */
+
+function issueCertificate(){
+
+    if(!published){
+
+        toast(
+            "Publish the website first."
+        );
+
+        return;
+
+    }
+
+
+    const name =
+    $("certificateName")
+    .value
+    .trim();
+
+
+    const project =
+    $("certificateProject")
+    .value
+    .trim()
+    ||
+    "LabTechVision Web Builder";
+
+
+    if(!name){
+
+        toast(
+            "Enter the publisher's full name."
+        );
+
+
+        $("certificateName")
+        .focus();
+
+
+        return;
+
+    }
+
+
+    certificateIssued =
+    true;
+
+
+    certificateId =
+    "LTV-"
+    +
+    Date.now()
+    .toString(36)
+    .toUpperCase()
+    +
+    "-"
+    +
+    Math.random()
+    .toString(36)
+    .slice(2,7)
+    .toUpperCase();
+
+
+    $("certNameText")
+    .textContent =
+    name;
+
+
+    $("certProjectText")
+    .textContent =
+    project;
+
+
+    $("certDate")
+    .textContent =
+    new Date()
+    .toLocaleDateString(
+        "en-GB",
+        {
+            day:"2-digit",
+            month:"long",
+            year:"numeric"
+        }
+    );
+
+
+    $("certId")
+    .textContent =
+    "ID "
+    +
+    certificateId;
+
+
+    $("verificationBox")
+    .textContent =
+
+    "✓ CERTIFICATE ISSUED — "
+    +
+    certificateId
+    +
+    " — Signed by MR. CHISHALA LABAN";
+
+
+    $("certificatePreview")
+    .classList
+    .remove(
+        "hidden"
+    );
+
+
+    let p =
+    projects.find(
+        x =>
+        x.name === project
+    );
+
+
+    if(p){
+
+        p.certificateId =
+        certificateId;
+
+        p.certificateName =
+        name;
+
+    }
+
+
+    saveProjects();
+
+
+    updateDashboard();
+
+
+    toast(
+        "Landscape certificate issued successfully."
+    );
+
+
+    $("certificatePreview")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   PRINT CERTIFICATE
+===================================================== */
+
+function printCertificate(){
+
+    if(!certificateIssued){
+
+        toast(
+            "Issue the certificate first."
+        );
+
+        return;
+
+    }
+
+
+    const cert =
+    $("certificateCanvas")
+    .outerHTML;
+
+
+    const css =
+    document
+    .querySelector("style")
+    .innerHTML;
+
+
+    const w =
+    window.open(
+        "",
+        "_blank"
+    );
+
+
+    if(!w){
+
+        toast(
+            "Please allow pop-ups to print the certificate."
+        );
+
+        return;
+
+    }
+
+
+    w.document.write(`
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+LabTechVision Certificate
+</title>
+
+<style>
+
+@page{
+
+    size:A4 landscape;
+
+    margin:0;
+
+}
+
+html,
+body{
+
+    margin:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:#07122d;
+
+}
+
+${css}
+
+.certificate{
+
+    width:100vw;
+
+    height:100vh;
+
+    aspect-ratio:auto;
+
+}
+
+.certificate-shell{
+
+    padding:0;
+
+    background:none;
+
+    box-shadow:none;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+${cert}
+
+</body>
+
+</html>
+
+`);
+
+
+    w.document.close();
+
+
+    setTimeout(()=>{
+
+        w.focus();
+
+        w.print();
+
+    },700);
+
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+function sendWhatsApp(){
+
+    const name =
+    $("contactName")
+    .value
+    ||
+    "Website visitor";
+
+
+    const message =
+    $("contactMessage")
+    .value
+    ||
+    "I would like help building a website.";
+
+
+    window.open(
+
+        "https://wa.me/260963363793?text="
+        +
+        encodeURIComponent(
+            "Hello LabTechVision, "
+            +
+            "my name is "
+            +
+            name
+            +
+            ". "
+            +
+            message
+        ),
+
+        "_blank"
+
+    );
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+function updateDashboard(){
+
+    $("projectCount")
+    .textContent =
+    projects.length;
+
+
+    $("publishedCount")
+    .textContent =
+
+    projects.filter(
+        p =>
+        p.status === "Published"
+    ).length;
+
+
+    $("certificateCount")
+    .textContent =
+
+    projects.filter(
+        p =>
+        p.certificateId
+    ).length;
+
+
+    $("projectList")
+    .textContent =
+
+    projects.length
+
+    ?
+
+    projects
+    .map(
+        (p,i)=>
+
+`${i+1}. ${p.name}
+
+Type:
+${p.type || "Website"}
+
+Status:
+${p.status}
+
+${p.url
+? "Domain: " + p.url
+: ""}
+
+${p.certificateId
+? "Certificate: " + p.certificateId
+: ""}
+
+Date:
+${p.publishedAt || p.date || ""}`
+
+    )
+    .join("\n\n")
+
+    :
+
+    "No projects yet.";
+
+}
+
+
+/* =====================================================
+   INITIALISE
+===================================================== */
+
+$("year")
+.textContent =
+new Date()
+.getFullYear();
+
+
+updateDashboard();
+
+
+generateAI();
+
+</script>
+
+</body>
+</html>
